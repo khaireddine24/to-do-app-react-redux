@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { ListGroup } from 'react-bootstrap';
 import TaskItem from './TaskItem';
 
 const ListTask = () => {
-    const todos=useSelector(state=>state.todos || []);
-    console.log(todos);
-  return (
-    <ul>
-        {
-            todos.map(todo=>(
-                <li key={todo.id}>
-                    <TaskItem {...todo}/>
-                </li>
-            ))}
-    </ul>
-  )
-}
+  const todos = useSelector(state => state.todos || []);
 
-export default ListTask
+  return (
+    <ListGroup>
+      {todos.map(todo => (
+        <ListGroup.Item key={todo.id} className="border-0 p-0 mb-2">
+          <TaskItem {...todo} />
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
+  );
+};
+
+export default ListTask;
